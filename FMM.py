@@ -7,19 +7,7 @@ Created on Sat Sep  8 15:48:16 2018
 """
 
 #使用正向最大匹配算法实现中文分词
-words_dic = []
 
-def init():
-    '''
-
-    读取词典文件
-    载入词典
-    '''
-    
-    with open('dic/dic.txt','r',encoding='utf8') as dic_input:
-        for word in dic_input:
-            words_dic.append(word.strip())         
-#实现正向最大匹配算法中的切词方法
 
 def cut_words(raw_sentence,words_dic):
     
@@ -49,27 +37,8 @@ def cut_words(raw_sentence,words_dic):
                 subSentence = subSentence[0:max_cut_length]
         sentence = sentence[max_cut_length:]
         words_length -= max_cut_length
-    words = "/".join(cut_word_list)
     
-    return words
+    return cut_word_list
 
-def main():
-    '''
-    与用户交互接口
-    :return
-    '''
-    init()
-    while True:
-        print('请输入您要分词的序列:')
-        input_str = input()
-        if not input_str:
-            break
-        result = cut_words(input_str,words_dic)
-        print('分词结果：')
-        print(result)
-        
-        
-if __name__ == "__main__":
-    main()        
-        
+
         

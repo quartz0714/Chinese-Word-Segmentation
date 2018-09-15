@@ -2,19 +2,6 @@
 
 
 
-#使用逆向最大匹配算法实现中文分词
-
-words_dic = []
-
-def init():
-    """
-    读取词典文件
-    获取词典
-    :return:
-    """
-    with open("dic/dic.txt","r",encoding="utf-8") as dic_input:
-        for word in dic_input:
-            words_dic.append(word.strip())
 
 
 #实现逆向最大匹配算法中的切词方法
@@ -51,26 +38,5 @@ def cut_words(raw_sentence,words_dic):
 
     cut_word_list.reverse()
 
-    words = "/".join(cut_word_list)
-    return words
+    return cut_word_list
 
-def main():
-    """
-    用户交互接口
-    :return:
-    """
-    init()
-    while True:
-        print("请输入您要分词的序列：")
-        input_str = input()
-        if not input_str:
-            break
-        else:
-            result = cut_words(input_str,words_dic)
-
-        print("分词结果")
-        print(result)
-
-
-if __name__  == "__main__":
-    main()
